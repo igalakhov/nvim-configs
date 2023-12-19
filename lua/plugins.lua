@@ -54,4 +54,7 @@ return require('packer').startup(function(use)
     	use 'voldikss/vim-floaterm'
 
 	use 'echasnovski/mini.bufremove'
+	use 'andweeb/presence.nvim'
+
+	use 'numToStr/Comment.nvim'
 end)

@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 require('plugins')
 
@@ -40,6 +41,7 @@ require("mason").setup({
 require("mason-lspconfig").setup()
 
 require("rust-tools").setup()
+require'lspconfig'.pyright.setup{}
 
 
 -- LSP Diagnostics Options Setup 
@@ -273,10 +275,21 @@ wk.register({
 	p = {
 		name = "project",
 		o = { "<cmd>Telescope workspaces<cr>", "Open Project"}
-	}
+	},
+
 }, { prefix = "<leader>" })
 
+require('Comment').setup()
+
+vim.api.nvim_set_keymap("n", "<localleader>gi", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = false, silent = true })
+vim.api.nvim_set_keymap("n", "<localleader>gg", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = false, silent = true })
+vim.api.nvim_set_keymap("n", ";", "gcc", {});
+vim.api.nvim_set_keymap("v", ";", "gc", {});
+
 require('mini.bufremove').setup()
+
+require("presence").setup()
+
 
 -- FloaTerm configuration
 vim.keymap.set('n', "t", ":FloatermToggle<CR>")
