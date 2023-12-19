@@ -284,7 +284,7 @@ require('Comment').setup()
 vim.api.nvim_set_keymap("n", "<localleader>gi", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = false, silent = true })
 vim.api.nvim_set_keymap("n", "<localleader>gg", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = false, silent = true })
 vim.api.nvim_set_keymap("n", ";", "gcc", {});
-vim.api.nvim_set_keymap("v", ";", "gc", {});
+vim.api.nvim_set_keymap("v", ";", "gcgv", {});
 
 require('mini.bufremove').setup()
 
