@@ -40,7 +40,19 @@ require("mason").setup({
 
 require("mason-lspconfig").setup()
 
-require("rust-tools").setup()
+require("rust-tools").setup({
+	server = {
+	    standalone = true,
+	    settings = {
+            ["rust-analyzer"] = {
+		procMacro = { enable = false },
+                checkOnSave = {
+                    command = "clippy"
+                },
+            }
+        }
+	}
+})
 require'lspconfig'.pyright.setup{}
 
 
