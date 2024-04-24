@@ -19,12 +19,6 @@ return require('packer').startup(function(use)
 		'nvim-telescope/telescope.nvim', tag = '0.1.3',
 		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
-	use 'ggandor/lightspeed.nvim'
-	use {
-		"m4xshen/hardtime.nvim",
-		dependencies = { "MunifTanjim/nui.nvim", "nvim-llluaua/plenary.nvim" },
-		opts = {}
-	}
 	use 'natecraddock/workspaces.nvim'
 	use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
 	use 'williamboman/mason.nvim'
@@ -51,14 +45,7 @@ return require('packer').startup(function(use)
 
 	use 'nvim-treesitter/nvim-treesitter'
 
-	use 'voldikss/vim-floaterm'
-
-	use 'andweeb/presence.nvim'
-
 	use 'numToStr/Comment.nvim'
-	use 'stevearc/vim-arduino'
 	use 'windwp/nvim-ts-autotag'
 	use 'yamatsum/nvim-cursorline'
-	use 'xiyaowong/nvim-cursorword'
-	use 'famiu/bufdelete.nvim'
 end)

@@ -292,41 +292,37 @@ require('nvim-treesitter.configs').setup {
 	}
 }
 
--- FloaTerm configuration
--- map('n', "<leader>ft", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose=2 fish <CR> ")
--- map('n', "t", ":FloatermToggle myfloat<CR>")
--- map('t', "<Esc>", "<C-\\><C-n>:q<CR>")
-
 local wk = require("which-key")
 
 wk.register({
 	f = {
 		name = "file",
-		f = { "<cmd>Telescope find_files<cr>", "Find File" },
-		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" }
+		f = { "<cmd>Telescope find_files<cr>", "Recent" },
+		r = { "<cmd>Telescope oldfiles<cr>", "Find" }
 
 	},
 	p = {
 		name = "project",
-		o = { "<cmd>Telescope workspaces<cr>", "Open Project" }
+		o = { "<cmd>Telescope workspaces<cr>", "Open" },
+		s = { "<cmd>Telescope live_grep<cr>", "Search" }
 	},
 	t = {
 		name = "tree",
-		t = { "<cmd>NvimTreeToggle<cr>", "Toggle Tree" }
+		t = { "<cmd>NvimTreeToggle<cr>", "Toggle" }
 	},
 	b = {
 		name = "buffer",
 		b = { "<cmd>buffers<cr>", "Buffers" },
 		n = { "<cmd>bn<cr>", "Next" },
 		p = { "<cmd>bp<cr>", "Previous" },
-		f = { "<cmd>Telescope buffers<cr>", "Find Buffer" }
+		f = { "<cmd>Telescope buffers<cr>", "Find" }
 	}
 
 }, { prefix = "<leader>" })
 
 require('Comment').setup()
 
-vim.api.nvim_set_keymap("n", ":bd", "<cmd>Bdelete<CR>", { noremap = false, silent = false })
+-- vim.api.nvim_set_keymap("n", ":bd", "<cmd>Bdelete<CR>", { noremap = false, silent = true })
 vim.api.nvim_set_keymap("n", "<localleader>gi", "<cmd>lua vim.lsp.buf.declaration()<CR>",
 	{ noremap = false, silent = true })
 vim.api.nvim_set_keymap("n", "<localleader>ht", "<cmd>lua vim.lsp.buf.hover()<CR>",
@@ -336,23 +332,6 @@ vim.api.nvim_set_keymap("n", "<localleader>gg", "<cmd>lua vim.lsp.buf.definition
 vim.api.nvim_set_keymap("n", ";", "gcc", {});
 vim.api.nvim_set_keymap("v", ";", "gcgv", {});
 
-require("presence").setup({
-	neovim_image_text   = "The One True Text Editor",
-	main_image          = "neovim",
-	enable_line_number  = true,
-	buttons             = false,
-	show_time           = true,
-	editing_text        = "Editing [redacted]",
-	file_explorer_text  = "Browsing...",
-	git_commit_text     = "Committing changes",
-	plugin_manager_text = "Managing plugins",
-	reading_text        = "Reading...",
-	workspace_text      = "Working...",
-	line_number_text    = "Line [redacted] out of [redacted]",
-})
-
-
-require 'lspconfig'.arduino_language_server.setup {}
 require 'lspconfig'.tsserver.setup {}
 require 'lspconfig'.lua_ls.setup {}
 require 'lspconfig'.bufls.setup {}
@@ -376,4 +355,4 @@ require('nvim-cursorline').setup {
 		hl = { underline = true },
 	}
 }
-vim.g.cursorword_disable_filetypes = { "NvimTree" }
+-- vim.g.cursorword_disable_filetypes = { "NvimTree" }
