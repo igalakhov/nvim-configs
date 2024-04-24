@@ -53,7 +53,6 @@ return require('packer').startup(function(use)
 
 	use 'voldikss/vim-floaterm'
 
-	use 'echasnovski/mini.bufremove'
 	use 'andweeb/presence.nvim'
 
 	use 'numToStr/Comment.nvim'
@@ -61,4 +60,5 @@ return require('packer').startup(function(use)
 	use 'windwp/nvim-ts-autotag'
 	use 'yamatsum/nvim-cursorline'
 	use 'xiyaowong/nvim-cursorword'
+	use 'famiu/bufdelete.nvim'
 end)

@@ -15,6 +15,9 @@ require("nvim-tree").setup({
 	open_on_tab = true,
 	update_focused_file = {
 		enable = true
+	},
+	renderer = {
+		root_folder_label = false
 	}
 })
 
@@ -246,6 +249,7 @@ require('lualine').setup {
 }
 
 local format_on_save = require("format-on-save")
+
 local formatters = require("format-on-save.formatters")
 
 format_on_save.setup({
@@ -259,9 +263,16 @@ format_on_save.setup({
 
 require("bufferline").setup({
 	options = {
-		separator_style = "slope",
+		mode = "tabs",
+		separator_style = "slant",
 		show_buffer_close_icons = false,
 		show_close_icon = false,
+		offsets = {
+			{
+				filetype = "NvimTree",
+				text = "",
+			}
+		}
 	},
 })
 
@@ -299,11 +310,23 @@ wk.register({
 		name = "project",
 		o = { "<cmd>Telescope workspaces<cr>", "Open Project" }
 	},
+	t = {
+		name = "tree",
+		t = { "<cmd>NvimTreeToggle<cr>", "Toggle Tree" }
+	},
+	b = {
+		name = "buffer",
+		b = { "<cmd>buffers<cr>", "Buffers" },
+		n = { "<cmd>bn<cr>", "Next" },
+		p = { "<cmd>bp<cr>", "Previous" },
+		f = { "<cmd>Telescope buffers<cr>", "Find Buffer" }
+	}
 
 }, { prefix = "<leader>" })
 
 require('Comment').setup()
 
+vim.api.nvim_set_keymap("n", ":bd", "<cmd>Bdelete<CR>", { noremap = false, silent = false })
 vim.api.nvim_set_keymap("n", "<localleader>gi", "<cmd>lua vim.lsp.buf.declaration()<CR>",
 	{ noremap = false, silent = true })
 vim.api.nvim_set_keymap("n", "<localleader>ht", "<cmd>lua vim.lsp.buf.hover()<CR>",
@@ -312,17 +335,6 @@ vim.api.nvim_set_keymap("n", "<localleader>gg", "<cmd>lua vim.lsp.buf.definition
 	{ noremap = false, silent = true })
 vim.api.nvim_set_keymap("n", ";", "gcc", {});
 vim.api.nvim_set_keymap("v", ";", "gcgv", {});
--- vim.api.nvim_create_autocmd("FileType", {
--- 	pattern = "sml",
--- 	callback = function()
--- 		vim.api.nvim_buf_set_keymap(0, "n", "<localleader>gt", "<cmd>SMLTypeQuery<CR>",
--- 			{ noremap = false, silent = true })
--- 		vim.api.nvim_buf_set_keymap(0, "n", "<localleader>gg", "<cmd>SMLJumpToDef<CR>",
--- 			{ noremap = false, silent = true })
--- 	end
--- })
-
-require('mini.bufremove').setup()
 
 require("presence").setup({
 	neovim_image_text   = "The One True Text Editor",
