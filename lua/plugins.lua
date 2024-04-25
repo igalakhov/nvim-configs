@@ -2,6 +2,58 @@ return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use { "catppuccin/nvim", as = "catppuccin" }
 	use {
+		'goolord/alpha-nvim',
+		requires = {
+			'nvim-tree/nvim-web-devicons',
+			'nvim-lua/plenary.nvim'
+		},
+		config = function()
+			local alpha = require("alpha")
+
+			local header = {
+				type = "text",
+				val = {
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                     ]],
+					[[       ████ ██████           █████      ██                     ]],
+					[[      ███████████             █████                             ]],
+					[[      █████████ ███████████████████ ███   ███████████   ]],
+					[[     █████████  ███    █████████████ █████ ██████████████   ]],
+					[[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+					[[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+					[[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+					[[                                                                       ]],
+				},
+				opts = {
+					position = "center",
+					hl = "AlphaHeader",
+				},
+			}
+			alpha.setup({
+				layout = {
+					header
+				},
+			})
+		end
+	}
+	use {
 		'nvim-tree/nvim-tree.lua',
 		requires = {
 			'nvim-tree/nvim-web-devicons',
@@ -19,6 +71,7 @@ return require('packer').startup(function(use)
 		'nvim-telescope/telescope.nvim', tag = '0.1.3',
 		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
+
 	use 'natecraddock/workspaces.nvim'
 	use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
 	use 'williamboman/mason.nvim'
