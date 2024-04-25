@@ -222,7 +222,7 @@ require('lualine').setup {
 	options = {
 		theme = bubbles_theme,
 		component_separators = '|',
-		section_separators = { left = '', right = '' },
+		-- section_separators = { left = '', right = '' },
 		disabled_filetypes = {
 			statusline = { 'NvimTree', 'alpha' },
 			winbar = {},
@@ -230,12 +230,11 @@ require('lualine').setup {
 	},
 	sections = {
 		lualine_a = {
-			{ 'mode', separator = { left = '' }, right_padding = 2 },
+			{ 'mode', separator = { left = '', right = '' }, right_padding = 2 },
 		},
-		lualine_b = { 'filename', 'branch' },
-		lualine_c = { 'fileformat' },
+		lualine_b = { 'filename', 'filetype' },
 		lualine_x = {},
-		lualine_y = { 'filetype', 'progress' },
+		lualine_y = { 'filetype' },
 		lualine_z = {
 			{ 'location', separator = { right = '' }, left_padding = 2 },
 		},
@@ -246,7 +245,7 @@ require('lualine').setup {
 		lualine_c = {},
 		lualine_x = {},
 		lualine_y = {},
-		lualine_z = { 'location' },
+		lualine_z = {},
 	},
 	tabline = {},
 	extensions = {},
