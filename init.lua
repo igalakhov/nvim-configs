@@ -4,7 +4,7 @@ vim.g.maplocalleader = ","
 require('plugins')
 
 vim.opt.clipboard = "unnamedplus"
-vim.cmd.colorscheme "catppuccin-mocha"
+vim.cmd.colorscheme "tokyonight-night"
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.g.loaded_netrw = 1
@@ -204,25 +204,24 @@ local bubbles_theme = {
 	normal = {
 		a = { fg = colors.black, bg = colors.violet },
 		b = { fg = colors.white, bg = colors.grey },
-		c = { fg = colors.black, bg = colors.black },
+		c = { fg = colors.black },
 	},
-
 	insert = { a = { fg = colors.black, bg = colors.blue } },
 	visual = { a = { fg = colors.black, bg = colors.cyan } },
 	replace = { a = { fg = colors.black, bg = colors.red } },
 
 	inactive = {
-		a = { fg = colors.white, bg = colors.black },
-		b = { fg = colors.white, bg = colors.black },
-		c = { fg = colors.black, bg = colors.black },
+		a = { fg = colors.white, },
+		b = { fg = colors.white, },
+		c = { fg = colors.black, },
 	},
 }
 
 require('lualine').setup {
 	options = {
-		theme = bubbles_theme,
+		-- theme = bubbles_theme,
 		component_separators = '|',
-		-- section_separators = { left = '', right = '' },
+		section_separators = { left = '', right = '' },
 		disabled_filetypes = {
 			statusline = { 'NvimTree', 'alpha' },
 			winbar = {},
@@ -230,14 +229,16 @@ require('lualine').setup {
 	},
 	sections = {
 		lualine_a = {
-			{ 'mode', separator = { left = '', right = '' }, right_padding = 2 },
+			{ 'tabs', separator = { left = '', right = '' }, right_padding = 2 },
 		},
-		lualine_b = { 'filename', 'filetype' },
+		lualine_b = { 'mode', 'filename' },
+		lualine_c = {},
 		lualine_x = {},
 		lualine_y = { 'filetype' },
 		lualine_z = {
-			{ 'location', separator = { right = '' }, left_padding = 2 },
+			{ 'location', separator = { left = '', right = '' }, left_padding = 2 },
 		},
+
 	},
 	inactive_sections = {
 		lualine_a = { 'filename' },
@@ -247,6 +248,7 @@ require('lualine').setup {
 		lualine_y = {},
 		lualine_z = {},
 	},
+
 	tabline = {},
 	extensions = {},
 }
